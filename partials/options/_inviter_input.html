@@ -1,0 +1,12 @@
+<form class="inviter-input input-group input-group-sm col-xs-5 pull-right" 
+    ng-submit="setInviter()">
+    <input type="text" class="form-control" placeholder="我的邀请人（邮箱/手机号）"
+        manual-focus="focusInviterInput" ng-model="tempInviter"
+        ui-keydown="{esc: 'showInviterInput=false'}"
+        >
+    <div class="input-group-btn">
+        <button class="btn btn-success">
+            确定
+        </button>
+    </div>
+</form>

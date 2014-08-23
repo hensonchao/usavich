@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>登录</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/login.css"/>
+    <link rel="stylesheet" href="/css/animate.css"/>
+</head>
+<body>
+
+<div class="container font-hei"  ng-controller="MainController"
+     ng-switch="$root.state" ng-cloak>
+    <div class="heading">
+        <h1 class="font-kai text-center text-danger">红杏</h1>
+
+        <h2 class="font-kai text-center text-muted">
+            这里离 <b>真正的互联网</b>，还有 <b>15</b> 秒的距离
+        </h2>
+    </div>
+
+    <form name="account" class="account step"
+          ng-switch-when="account"
+          ng-controller="AccountController"
+          ng-submit="checkNameExistence()"
+          novalidate>
+
+        <div class="form-group" form-state="account.name" >
+            <div class="errors">
+                <span class="error" ng-if="account.name.$error.format">账号格式为邮箱或手机号</span>
+                <span class="error" ng-if="account.name.$error.required">请输入账号</span>
+            </div>
+
+            <label>账号</label>
+            <input name="name" class="form-control font-kai input-lg"
+                   type="text" ng-model="$root.name"
+                   placeholder="请输入 邮箱/手机号码"
+                   focus-bind="focuses.name" required
+                   ng-disabled="disableInput"
+                   ui-validate="{format: 'checkName($value)'}">
+
+            <button ng-click="checkNameExistence()" type="submit" class="btn btn-block btn-info btn-lg">
+                注册 | 登录
+                <img src="img/loading-spin.svg" alt="loading" ng-show="disableInput"/>
+            </button>
+        </div>
+    </form>
+
+    <form name="login" class="login step" ng-submit="doLogin()"
+          ng-controller="LoginController" ng-switch-when="login" novalidate>
+        <div class="form-group has-success">
+            <label>账号</label>
+            <input name="name" class="form-control input-lg font-kai" type="text" placeholder="请输入 邮箱/手机号码"
+                   ng-model="$root.name" ng-focus="$root.switchState('account')"
+                   ng-disabled="disableInput">
+            <a class="form-control-feedback glyphicon glyphicon-ok" ng-click="$root.switchState('account')"></a>
+        </div>
+
+        <div class="form-group" form-state="login.password">
+            <div class="errors">
+                <span class="error" ng-if="login.password.$error.required">请输入密码</span>
+                <span class="error" ng-if="login.password.$error.minlength">请输入至少六位密码</span>
+                <span class="error" ng-if="login.password.$error.errorPassword">您输入的密码不正确</span>
+            </div>
+            <label>密码</label>
+            <input name="password" class="form-control input-lg font-kai"
+                   type="password" ng-model="password"
+                   focus-bind="focuses.password"
+                   ng-disabled="disableInput"
+                   ng-change="login.password.$setValidity('errorPassword', true)"
+                   required ng-minlength="6"
+                   placeholder="请输入密码" >
+        </div>
+
+        <button type="submit" class="btn btn-block btn-primary btn-lg">
+            登录
+            <img src="img/loading-spin.svg" alt="loading" ng-show="disableInput"/>
+        </button>
+        <a ng-href="{{resetPasswordUrl}}"  target="_blank">找回密码</a>
+    </form>
+
+    <div class="alert alert-success animated bounce" ng-show="source()=='logout'">
+        已成功退出登录
+    </div>
+
+    <div class="alert alert-warning animated bounce" ng-show="source()=='force-login'">
+        请先登录 或 注册红杏账号
+    </div>
+
+    <p class="small text-muted text-center">如有问题，请联系官方QQ 2621346057</p>
+</div>
+<script data-main="/js/login.js"
+        src="/js/libs/require.js"></script>
+</body>
+</html>

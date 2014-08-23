@@ -1,0 +1,18 @@
+<div class="conflict page">
+    <div class="block section">
+        <span class="section-title text-danger">因插件冲突，红杏无法正常工作</span>
+        <hr>
+        <ul class="list-unstyled">
+            <li ng-repeat="ext in extensions">
+                <img ng-src="{{ ext.icons[0].url }}">
+                <a href="chrome://extensions/?id={{ ext.id }}" target="_blank"
+                        ng-click="openExtensionPage(ext.id)">
+                    {{ ext.name }}
+                </a>
+            </li>
+        </ul>
+        <p class="text-muted text-center">
+            请点击到<a href="chrome://extensions" ng-click="openExtensionPage()">插件列表</a>，暂时禁用他们
+        </p>
+    </div>
+</div>

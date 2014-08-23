@@ -1,0 +1,84 @@
+<div class="page-header">
+    <h2>邀请奖励</h2>
+    <div ng-hide="showInviterInput">
+        <span class="right text-muted" ng-show="inviter">
+            我的邀请人：{{inviter}}
+        </span>
+        <span class="right text-muted" ng-hide="inviter">
+            我的邀请人：
+            <a href="" ng-click="showInviterInput=true;focusInviterInput=true;" >
+                未设定
+            </a> 
+        </span>
+    </div>
+    <inviter-input manual-focus="focusInviterInput" ng-show="showInviterInput"></inviter-input>
+
+
+    <div class="clearfix"></div>
+</div>
+
+<div class="rules">
+    <h5 class="text-center">邀请链接：<a ng-href="{{invite_url}}" target="_blank">{{short_invite_url}}</a></h5>
+    <hr>
+    <h3>奖励条件：<small>（需同时满足2条，但不计先后顺序）</small></h3>
+    <ul class="steps">
+        <li>
+            <span class="label label-info">1</span>
+            发送邀请链接给小伙伴， 小伙伴通过邀请链接 <b>安装红杏（或者手动填写邀请人）</b>
+        </li>
+        <li>
+            <span class="label label-info">2</span>
+            小伙伴<b>充值</b>成为红杏VIP（30天或以上套餐）
+        </li>
+        <li>
+            <span class="label label-success">奖</span>
+            双方都获得【10天VIP】的奖励
+        </li>
+    </ul>
+
+    <div class="alert alert-warning">
+        为了服务的长期稳定，请勿在公开场合发放邀请信息（发现后将取消邀请奖励权限），自己私下交流即可
+    </div>
+</div>
+
+<table class="invitation table">
+    <thead>
+    <tr>
+        <th class="account">被邀请人</th>
+        <th class="time">VIP状态</th>
+        <th class="action">领取奖励</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="text-muted" ng-show="$root.invitationList && !$root.invitationList.length">
+        <td colspan="3">暂时还没有邀请任何人使用红杏</td>
+    </tr>
+    <tr ng-repeat="invitation in $root.invitationList" ng-switch='invitation.status'>
+        <td class="account">
+            {{ invitation.receiver|renderAccount }}
+            <span class="text-muted" ng-hide="invitation.sender|isMe">（{{ invitation.sender | renderAccount }}邀请）</span>
+        </td>
+        <td class="time" ng-switch-when="not_vip">
+            <span class="label label-default">未开通VIP</span>
+        </td>
+        <td class="time" ng-switch-when="not_monthly_vip">
+            <span class="label label-default">未购买30天以上套餐</span>
+        </td>
+        <td class="time" ng-switch-when="rewardable">
+            <span class="text-success">已开通</span>
+        </td>
+        <td class="action" ng-switch-when="rewardable">
+            <button class="btn btn-xs btn-success" 
+                ng-show="invitation.can_fetch_reward"
+                ng-click="fetchInvitationReward(invitation)">
+                点击领取10天VIP
+            </button>
+            <span class="text-success" ng-hide="invitation.can_fetch_reward">
+                已领取
+            </span>
+        </td>
+        <td class="action" ng-show="invitation.status != 'rewardable'">
+            <span class="text-muted">暂无</span>
+        </td>
+    </tr>
+</table>

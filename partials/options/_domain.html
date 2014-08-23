@@ -1,0 +1,41 @@
+<div class="domain" ng-switch="status">
+    <div ng-switch-when="locked" class="locked" title="成为VIP后即可编辑">
+        <span class="name" class="form-control-static">
+            {{ domain.name }}
+        </span>
+    </div>
+
+    <div ng-switch-when="paused" class="locked paused" title="成为VIP后即可编辑">
+        <span class="glyphicon glyphicon-pause"></span>
+        <span class="name" class="form-control-static">
+            {{ domain.name }}
+        </span>
+    </div>
+    <form ng-switch-when="normal"
+        ng-submit="updateDomain()">
+        <div class="form-group" ng-if="!editing">
+            <a href="" class="remove glyphicon glyphicon-trash" title="删除域名"
+               ng-click="deleteDomain()">
+            </a>
+            <span class="name" class="form-control-static"
+                  ng-click="edit()">
+                {{ domain.name }}
+                <span class="glyphicon glyphicon-pencil"></span>
+            </span>
+        </div>
+        <div class="input-group" ng-if="editing">
+            <input type="text" class="form-control"
+                ng-model="edition.name" focus-bind="focusInput"
+                ui-keydown="{esc:'edit(false)'}">
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default" title="确认">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button>
+                <button type="button" class="btn btn-default" title="取消"
+                    ng-click="edit(false)">
+                    <span class="glyphicon glyphicon-ban-circle"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

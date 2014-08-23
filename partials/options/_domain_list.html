@@ -1,0 +1,60 @@
+<div class="page-header">
+    <h2>科学上网列表</h2>
+
+    <div class="sort dropdown pull-right right">
+        <a class="btn btn-link btn-xs"
+           data-animation="am-flip-x"
+           data-placement="bottom-right" bs-dropdown="dropdown">
+            {{sorter|rendSorter}}
+            <span class="caret"></span>
+        </a>
+    </div>
+
+
+    <div class="clearfix"></div>
+</div>
+
+<div class="page-alert alert alert-success {{animateClass}}" ng-hide="isVIP()">
+    <p>
+        你当前是普通用户，无法添加或修改科学上网列表（也无法使用“一直科学上网”模式）。<br>
+        作为功能演示，现在可以上
+        <a href="http://www.facebook.com" target="_blank">facebook</a> /
+        <a href="http://www.twitter.com" target="_blank">twitter</a> /
+        <a href="http://plus.google.com" target="_blank">google</a> 等网站。<br>
+        <a href="{{$root.payUrl}}" target="_blank">成为VIP用户</a>之后，即可不受任何限制，访问任意网站。
+    </p>
+</div>
+
+<div class="alert alert-info text-center" ng-show="isVIP()">
+    {{title}}
+</div>
+
+<form class="add-domain" ng-submit="addDomain()">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="请输入域名，按回车添加"
+               ng-model="domainToAdd">
+
+        <div class="input-group-btn">
+            <input type="submit" value="添加域名" class="btn btn-default">
+            </input>
+        </div>
+    </div>
+    <div class="help-block">在访问下面的的域名时，红杏会按需开启科学上网模式，自动防止无法访问的情况发生</div>
+</form>
+
+<div class="domains row">
+    <div ng-if="!isVIP()" class="col-xs-6"
+         ng-repeat="domain in guestDomains|orderBy:sorter">
+        <domain domain=domain status="'locked'"></domain>
+    </div>
+
+    <div ng-if="!isVIP()" class="col-xs-6"
+         ng-repeat="domain in filteredDomains |orderBy: sorter">
+        <domain domain=domain status="'paused'"></domain>
+    </div>
+
+    <div ng-repeat="domain in $root.domains|orderBy: sorter"
+         ng-if="isVIP() && !domain._deleted" class="col-xs-6">
+        <domain domain=domain status="'normal'"></domain>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="add page">
+    <p>添加 域名 到科学上网列表:</p>
+
+    <form>
+        <input class="domain form-control" name="domain" type="text"
+               ng-model="name">
+        <span class="text-muted">（含子域名）</span>
+
+        <div class="pull-right btn-group">
+            <button type="button" class="cancel btn btn-sm btn-default"
+                    ng-click="routeToMenu()">
+                取消
+            </button>
+            <button type="submit" class="add btn btn-sm btn-success"
+                ng-click="addDomain()">
+                确定
+            </button>
+        </div>
+    </form>
+</div>

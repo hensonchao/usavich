@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Usavich</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/popup.css" rel="stylesheet">
+
+</head>
+<body>
+<div ng-view></div>
+
+<div class="block-alert alert alert-danger" ng-controller="FooterController" ng-show="show" ng-cloak>
+
+    <p>红杏已撞墙，但可能会在不久之后自愈，请留意图标</p>
+    <p class="vip-service" ng-hide="vip">
+        p.s.
+        <a href="#" target="_blank" class="buy-vip btn btn-success btn-xs">VIP服务更稳定</a>
+    </p>
+</div>
+
+
+<script data-main="/js/popup.js" src="/js/libs/require.js"></script>
+</body>
+</html>
