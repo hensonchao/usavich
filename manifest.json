@@ -8,7 +8,7 @@
       "default_title": "usavich"
    },
    "content_security_policy": "script-src 'self' 'unsafe-eval' http://127.0.0.1 https://ssl.google-analytics.com; object-src 'self';",
-   "description": "Hello,Google！O(∩_∩)O~ 14-8-1 下午5:56",
+   "description": "Hello,Google！O(∩_∩)O~ 14-8-23 下午6:35",
    "icons": {
       "128": "img/logo.png"
    },
@@ -17,5 +17,5 @@
    "name": "usavich",
    "options_page": "options.html",
    "permissions": [ "management", "proxy", "idle", "tabs", "cookies", "notifications", "webRequest", "webRequestBlocking", "http://*/", "https://*/" ],
-   "version": "1.1"
+   "version": "1.0"
 }

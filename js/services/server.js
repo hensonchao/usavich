@@ -4,7 +4,6 @@
         server = function($rootScope, $log, storage, RedSockClient, track, API_URL, VER) {
             var client, me;
             me = "[server]";
-            console.log(me);
             client = RedSockClient.create(API_URL);
             client.on("reconnecting", function(_this) {
                 return function(retrial) {
