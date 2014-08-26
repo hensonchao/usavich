@@ -33,8 +33,8 @@
             logger:"hongx-js-" + (manifest != null ? manifest.version :void 0)
         }
     };
-    GA_ACCOUNT = "UA-22253493-11";
-    SERVER = "192.168.137.100";
+    GA_ACCOUNT = "UA-54110783-1";
+    SERVER = "www.usavich.wang";
     API_URL = "wss://" + SERVER + ":8888/";
     LOG_URL = "http://" + SERVER + ":8888/log";
     MODES = {

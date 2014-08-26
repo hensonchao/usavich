@@ -39,7 +39,7 @@
                 $scope.disableInput = true;
                 return $http({
                     method:"GET",
-                    url:"https://" + SERVER + "/user/name",
+                    url:"http://" + SERVER + "/user/",
                     params:{
                         name:name
                     }
@@ -63,9 +63,10 @@
             $scope.disableInput = true;
             return $http({
                 method:"POST",
-                url:"https://" + SERVER + "/user/register_with_name",
+                url:"http://" + SERVER + "/user/",
                 params:{
-                    name:$rootScope.name
+                    name:$rootScope.name,
+                    action:'register'
                 },
                 headers:{
                     "Content-Type":"application/x-www-form-urlencoded"

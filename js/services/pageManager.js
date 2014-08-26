@@ -60,6 +60,8 @@
                 url = "login.html";
                 fullUrl = chrome.runtime.getURL(url);
                 tail = source ? "#?source=" + source :"";
+                //判断所有标签中是否有登录页，如果存在则激活该标签并高亮显示，
+                //如果没有则打开新标签登录页
                 return chrome.tabs.getAllInWindow(null, function(tabs) {
                     var tab, _i, _len;
                     for (_i = 0, _len = tabs.length; _i < _len; _i++) {

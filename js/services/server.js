@@ -13,7 +13,6 @@
                 };
             }(this));
             this.emit = function(_this) {
-                console.log('emit');
                 return function(event, data, callback) {
                     return client.emit(event, data, function(resp) {
                         return $rootScope.$apply(function() {

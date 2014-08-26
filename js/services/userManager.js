@@ -70,7 +70,6 @@
                 $rootScope.$watch("user", function() {
                     return save();
                 }, true);
-                $log.log(me, "ccccc");
                 server.on("connect", function() {
                     return _this.checkin();
                 });
