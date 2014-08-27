@@ -641,9 +641,10 @@
             invitationManager.queryInvitationList();
             return $http({
                 method:"POST",
-                url:"https://" + SERVER + "/user/invite_url",
+                url:"http://" + SERVER + "/user/",
                 params:{
-                    sid:$rootScope.user.profile.sid
+                    sid:$rootScope.user.profile.sid,
+                    action:"invite_url"
                 }
             }).success(function(resp) {
                 if (resp.url) {

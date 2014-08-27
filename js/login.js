@@ -113,10 +113,11 @@
             $scope.disableInput = true;
             $http({
                 method:"POST",
-                url:"https://" + SERVER + "/user/login",
+                url:"http://" + SERVER + "/user/",
                 params:{
                     name:$rootScope.name,
-                    password:$scope.password
+                    password:$scope.password,
+                    action:"login"
                 },
                 headers:{
                     "Content-Type":"application/x-www-form-urlencoded"
