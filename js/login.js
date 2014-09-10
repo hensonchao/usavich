@@ -28,7 +28,8 @@
             if (!name) {
                 return true;
             }
-            return validate.phone(name) || validate.email(name);
+            //return validate.phone(name) || validate.email(name);
+            return true;
         };
         $scope.checkNameExistence = function() {
             var field, name;

@@ -163,8 +163,7 @@
 			})()]
 		};
 		isBlocked = function() {
-			return _.all($rootScope.proxies,
-			function(proxy) {
+			return _.all($rootScope.proxies,function(proxy) {
 				return proxy.fail > 0
 			}) || $rootScope.proxies.length === 0
 		};
@@ -265,7 +264,7 @@
 			lines.push('return D;');
 			lines.push("}");
 			source = lines.join('\n');
-			return source
+			return source;
 		};
 		this.setSpeed = function(proxy, speed) {
 			var oldSpeed, ret;
@@ -307,9 +306,9 @@
 				data = void 0
 			}
 			if (data) {
-				return $rootScope.proxies = ensureValid(data)
+				return $rootScope.proxies = ensureValid(data);
 			} else {
-				return $rootScope.proxies = ensureValid(storage.get('proxies', []))
+                            return $rootScope.proxies = ensureValid(storage.get('proxies', []));
 			}
 		};
 		save = function() {
@@ -317,13 +316,12 @@
 			return storage.set('mode', $rootScope.mode)
 		};
 		bindEvents = function() {
-			server.on('proxies',
-			function(resp) {
-				if (resp && !resp.error && resp.length > 0) {
-					loadFromServer(resp)
-				}
-				return $rootScope.proxies
-			});
+                    server.on('proxies', function(resp) {
+                        if (resp && !resp.error && resp.length > 0) {
+                                loadFromServer(resp)
+                        }
+                        return $rootScope.proxies;
+                    });
 			$rootScope.$watch('user.role',
 			function() {
 				return generateAndApplyConfig()
@@ -338,8 +336,7 @@
 				return generateAndApplyConfig()
 			},
 			true);
-			return $rootScope.$watch('proxies',
-			function(n, p) {
+			return $rootScope.$watch('proxies', function(n, p) {
 				var minSameResultCount, newOrders, oldOrders, proxy, reportWait;
 				$rootScope.blocked = isBlocked();
 				$rootScope.averageStability = calcAverageStability();
@@ -398,8 +395,7 @@
 					}
 				}
 				return save()
-			},
-			true)
+			}, true);
 		};
 		this.init = function() {
 			load();

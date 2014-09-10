@@ -478,7 +478,7 @@
         $scope.userRole = "";
         $scope.vip_left = 0;
         $scope.isVirgin = false;
-        DEFAULT_AVATAR = "http://honx.in/static/img/logo.png";
+        DEFAULT_AVATAR = "http://" + SERVER + "/img/logo.png";
         $scope.avatarUrl = "";
         $scope.vipLeftToolTip = {
             title:"VIP 剩余时间",
