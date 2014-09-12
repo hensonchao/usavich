@@ -35,7 +35,7 @@
     };
     GA_ACCOUNT = "UA-54110783-1";
     SERVER = "usavich.wang";
-    API_URL = "wss://" + SERVER + ":8888/";
+    API_URL = "ws://" + SERVER + ":8888/";
     LOG_URL = "http://" + SERVER + ":8888/log";
     MODES = {
         AUTO:"auto",
