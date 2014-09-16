@@ -68,7 +68,6 @@
                             _results = [];
                             for (_i = 0, _len = li.length; _i < _len; _i++) {
                                 callback = li[_i];
-                                console.log(name);
                                 _results.push(callback(data));
                             }
                             return _results;
@@ -99,11 +98,9 @@
                         _ws.onopen = function() {
                             $log.log(me, "onopen", url);
                             _lastBeat = timeUtils.milliTime();
-                            console.log('connect');
                             if (_retrial > 0) {
                                 _applyOnCallbacks("reconnect", _retrial);
                             } else {
-                                console.log('connect');
                                 _applyOnCallbacks("connect");
                             }
                             _retrial = 0;
